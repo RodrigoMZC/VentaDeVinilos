@@ -8,18 +8,10 @@
     <link rel="stylesheet" href="Styles/styles.css">
 </head>
 <body>
-    <!--<header>
-        <h1>Catálogo de Vinilos</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="productos.html">Catálogo</a></li>
-                <li><a href="index.html">Contacto</a></li>
-                <li><a href="#carrito">Carrito</a></li>
-            </ul>
-        </nav>
-    </header>-->
+    <header>
     <?php include 'Includes/header.php'; ?>
+    </header>
+    
 
     <section id="catalogo">
         <h2>Nuestros Vinilos</h2>

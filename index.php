@@ -17,7 +17,8 @@
     </section>
 
     <section id="productos">
-        <h2>Vinilos Destacados</h2>
+        <!-- Carrusel de tarjetas-->
+        <h2>Destacados</h2>
         <br><br>
         <div class="producto">
             <img src="Images/JJSecretos.avif" alt="Secretos">

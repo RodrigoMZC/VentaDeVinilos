@@ -1,13 +1,14 @@
-/*:root {
-    --texxto-obscuro: #333333;
-    --asd: #444444;
-    --dark-color: #555555;
-    --blanco: #f4f4f4;
-    --danger-color: #ff0000;
-    --success-color: #00ff00;
-    --warning-color: #ffff00;
-    --info-color: #00ffff;
-}*/
+:root {
+    --color-fondo: #fefefe;
+    --color-texto: #333333;
+    --color-boton: #ee9392;
+    --color-boton-hover: #cc7b7a;
+    --color-borde-input: #ccc;
+    --color-borde-hover: #555555;
+    --color-fondo-input: #efefef;
+    --color-borde-producto: #dddddd;   
+    --color-texto-claro: #cfcfcf;
+}
 * {
     margin: 0;
     padding: 0;
@@ -15,24 +16,29 @@
 }
 
 html {
-    background-color: #fefefe;
+    background-color: var(--color-fondo);
 }
 
 body {
+    padding-top: 50px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #fefefe;
-    /*color: #333333;*/
+    background-color: var(--color-fondo);
     line-height: 1.6;
+    align-items: center;
 }
-
 .header {
-    background-color: #fefefe;
-    border-bottom: 1px solid #ccc;
+    background-color: var(--color-fondo);
+    border-bottom: 1px solid var(--color-borde-input);
     padding: 10px 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+    transition: top 0.3s;
+}
+
+.hidden-header {
+    top: -60px; /* Adjust this value based on the height of your header */
 }
 
 .main-nav {
@@ -56,7 +62,7 @@ body {
 .logo a {
     font-size: 24px;
     text-decoration: none;
-    color: #333;
+    color: #333333;
     font-weight: bold;
 }
 
@@ -85,7 +91,7 @@ body {
 }
 
 .a-nav-item:hover, .favorite-button-header:hover, .bag-button-header:hover, .person-button-header:hover {
-    color: #ee9392;
+    color: var(--color-boton);
 }
 
 .search-button-header, .person-button-header, .bag-button-header {
@@ -102,7 +108,7 @@ body {
 }
 
 .search-icon:hover, .person-icon:hover, .bag-icon:hover {
-    fill: #ee9392;
+    fill: var(--color-boton);
 }
 
 .span-person-button-header, .span-facorite-button-header, .span-bag-button-header {
@@ -123,7 +129,97 @@ body {
         margin-bottom: 10px;
     }
 }
+        /*----LOGIN----*/ 
+.login {
+    background-color: var(--color-fondo); 
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative; 
+}
 
+.logo-login {
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.logo-login h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-icon {
+    height: 2rem;
+    width: 2rem;
+
+}
+
+form input {
+    width: 100%;
+    height: 3.5rem;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color-borde-input);
+    border-radius: 0.6rem;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #333333;
+}
+
+.btn-login {
+    background-color: var(--color-boton);
+    color: var(--color-fondo);
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: none;
+}
+
+.btn-login:hover {
+    background-color: #cc7b7a;
+}
+
+/* Media queries */
+/*@media (max-width: 768px) {
+    .login {
+        width: 70%;
+        padding: 30px;
+    }
+    .logo-login h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login {
+        width: 70%; 
+        padding: 20px;
+    }
+    .logo-login h1 {
+        font-size: 18px;
+    }
+    form input {
+        font-size: 14px;
+    }
+    .btn-login {
+        font-size: 14px;
+    }
+}*/
+        /*----FIN DE LOGIN----*/ 
 
 section {
     align-items: center;
@@ -146,7 +242,7 @@ section h2 {
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     font-size: 16px;
-    background-color: #f9f9f9;
+    background-color: var(--color-fondo);
     border-radius: 1.5rem;
 }
 
@@ -156,14 +252,14 @@ section h2 {
 }
 
 #productos {
-    /*padding: 1rem auto;*/
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 #productos h2{
-    width: 100%;
+    /*width: 100%;*/
+    text-align: center;
 }
 
 #catalogo {
@@ -209,9 +305,10 @@ section h2 {
 }
 
 .btn-compra {
-    background-color: #333333;
+    background-color: var(--color-boton);
     border-radius: 1.1rem;
-    color: white;
+    color: var(--color-texto);
+    font-weight: 700;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -219,28 +316,26 @@ section h2 {
 }
 
 .btn-compra:hover {
-    background-color: #555555;
+    background-color: var(--color-boton-hover);
 }
 
 .btn {
     border-radius: 1.5rem;
     display: inline-block;
-    /*background-color: #333333;*/
-    /*color: #ffffff;*/
     padding: 10px 20px;
     text-decoration: none;
     margin-top: 20px;
 }
 
 .btn:hover {
-    background-color: #555555;
+    background-color: var(--color-boton-hover);
 }
 
 #contacto {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    background-color: #ffffff;
+    background-color: var(--color-fondo);
     border-radius: 1.5rem;
     padding: 1rem;
     border: 1px solid #ddd;
@@ -249,6 +344,7 @@ section h2 {
     align-items: center;
     color: #333333;
     width: 70%;
+    margin-bottom: 50px;
 }
 
 #contacto h2 {
@@ -256,19 +352,12 @@ section h2 {
 }
 
 .formulaio {
-    background-color: #efefef;
+    background-color: var(--color-fondo);
     width: 90%;
-    /*width: min( 60rem, 100% );*/
     margin: 0 auto;
     padding: 1rem;
     border-radius: 1rem;
 }
-
-/*.formulaio fieldset {
-    background-color: #333333;
-    border: none;
-    width: 75%;
-}*/
 
 .formulaio legend {
     font-size: 2rem;
@@ -301,7 +390,7 @@ section h2 {
     flex-wrap: wrap;
     justify-content: center;
     width: 80%;
-    margin: 0 auto; /* Center the container within its parent */
+    margin: 0 auto;
 }
 
 .campo {
@@ -324,7 +413,7 @@ section h2 {
     padding: 0.5rem;
     border-radius: .5rem;
     color: #cfcfcf;
-    background-color: #333333;
+    background-color: #F0EDDD;
 }
 
 .campo-textarea{
@@ -349,15 +438,14 @@ section h2 {
 
 }
 
-/* General Footer Styles */
 footer {
-    background-color: #fefefe;
+    background-color: var(--color-fondo);
     color: #333;
     padding: 20px 0;
     text-align: center;
     position: relative;
     bottom: 0;
-    border-top: solid 1px #ccc;
+    border-top: solid 1px var(--color-borde-input);
     width: 100%;
 }
 
@@ -377,7 +465,7 @@ footer {
 }
 
 .a-logo-footer:hover {
-    color: #ee9392;
+    color: var(--color-boton);
 }
 
 .name-footer {
@@ -404,7 +492,7 @@ footer {
 }
 
 .social-footer:hover {
-    color: #ee9392;
+    color: var(--color-boton);
 }
 
 .social-footer svg {
@@ -413,7 +501,7 @@ footer {
 }
 
 .social-footer svg:hover {
-    fill: #ee9392;
+    fill: var(--color-boton);
 }
 
 .desc-footer {

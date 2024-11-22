@@ -1,0 +1,144 @@
+:root {
+    --color-fondo: #fefefe;
+    --color-texto: #333333;
+    --color-boton: #ee9392;
+    --color-boton-hover: #cc7b7a;
+    --color-borde-input: #ccc;
+    --color-borde-hover: #555555;
+    --color-fondo-input: #efefef;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    background-color: var(--color-fondo);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    align-items: center;
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.signup-form input,
+.signup-form button {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-login {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-login:hover {
+    background-color: #555;
+}
+
+
+.login {
+    background-color: var(--color-fondo); 
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    position: relative; 
+}
+
+.logo-login {
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.logo-login h1 {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-icon {
+    height: 2rem;
+    width: 2rem;
+
+}
+
+form input {
+    width: 100%;
+    height: 3.5rem;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color-borde-input);
+    border-radius: 0.6rem;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #333333;
+}
+
+.btn-login {
+    background-color: var(--color-boton);
+    color: var(--color-fondo);
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: none;
+}
+
+.btn-login:hover {
+    background-color: #cc7b7a;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .login {
+        width: 70%;
+        padding: 30px;
+    }
+    .logo-login h1 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login {
+        width: 70%; 
+        padding: 20px;
+    }
+    .logo-login h1 {
+        font-size: 18px;
+    }
+    form input {
+        font-size: 14px;
+    }
+    .btn-login {
+        font-size: 14px;
+    }
+}
+
+/* Media queries */
+

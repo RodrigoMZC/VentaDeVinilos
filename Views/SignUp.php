@@ -1,5 +1,4 @@
 <?php
-    require_once '../Config/Connection.php';
     require_once '../Controllers/UsuarioController.php';
 
     $auth = new Autenticacion($conn);
@@ -23,6 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../styles/log-sign.css">
+    <script src="/Scripts/Validacion.js"></script>
     <title>Document</title>
 </head>
 <body>

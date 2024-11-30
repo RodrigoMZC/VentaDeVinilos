@@ -1,6 +1,12 @@
 <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     require_once __DIR__ . '/Config/Connection.php';
     require_once __DIR__ . '/Controllers/ViniloController.php';
+    require_once __DIR__ . '/Controllers/UsuarioController.php';
+    require_once __DIR__ . '/Controllers/DireccionController.php';
 
     $viniloController = new ViniloController($conn);
     $vinilos = $viniloController->obtenerVinilo();
@@ -8,7 +14,27 @@
     if (!$vinilos) {
         echo "Error: No se pudo recuperar la información de los vinilos.";
     }
+
+    /*if (!isset($_SESSION['usr_id'])) {
+        header("Location: /Views/Login.php");
+        exit;
+    }
+
+    $usr_id = $_SESSION['usr_id'];
+
+    $auth = new Autenticacion($conn);
+    $dir  = new DireccionController($conn); 
+
+    $clienteData = $auth->obtenerCliente($usr_id);
+    $direcciones = $dir->obtenerDireccion($usr_id);
+
+    if (!$clienteData) {
+        echo "Error: No se pudo recuperar la información del usuario.";
+    }*/
+
+// Incluir el header
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +43,7 @@
     <meta name="description" content="Tienda de vinilos - Los mejores discos de vinilo al mejor precio.">
     <title>Tienda de Vinilos | Home</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script defer src="/Scripts/Carrusel.js"></script>
 </head>
 <body>
     <?php include 'Views/Includes/header.php'; ?>
@@ -24,22 +51,26 @@
     <section class="productos">
         <!-- Carrusel de tarjetas-->
         <h2>Destacados</h2>
-        <br><br>
         <div class="producto">
-            <?php if (!empty($vinilos)): ; ?>
-                <?php for ($i = 0; $i < 4; $i++): ?>
-                    <div class="vinilo-item">
-                        <img src="<?php echo htmlspecialchars($vinilos[$i]['vin_imgURL']);?>" alt="<?php echo htmlspecialchars($vinilo[$i]['vin_nombre']);?>">
-                        <h3><?php echo htmlspecialchars($vinilos[$i]['vin_nombre']); ?></h3>
-                        <h3><?php echo htmlspecialchars($vinilos[$i]['art_nombre']); ?></h3>
-                        <p>Precio: $<?php echo htmlspecialchars($vinilos[$i]['vin_precio']); ?></p>
-                        <button class="btn-compra">Agregar</button>
-                    </div>
-                <?php endfor; ?>
-              
-            <?php else: ?>
-                <span>No se encontraron vinilos para mostrar.</span>
-            <?php endif; ?>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <div class="carousel">
+                    <?php if (!empty($vinilos)): ; ?>
+                        <?php for ($i = 0; $i < 10; $i++): ?>
+                            <div class="vinilo-item">
+                                <img src="<?php echo htmlspecialchars($vinilos[$i]['vin_imgURL']);?>" 
+                                    alt="<?php echo htmlspecialchars($vinilo[$i]['vin_nombre']);?>">
+                                <h3><?php echo htmlspecialchars($vinilos[$i]['vin_nombre']); ?></h3>
+                                <h3><?php echo htmlspecialchars($vinilos[$i]['art_nombre']); ?></h3>
+                                <p>Precio: $<?php echo htmlspecialchars($vinilos[$i]['vin_precio']); ?></p>
+                            </div>
+                        <?php endfor; ?>
+                    <?php else: ?>
+                        <span>No se encontraron vinilos para mostrar.</span>
+                    <?php endif; ?>
+                </div>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+            </div>
         </div>
         <!--<a href="productos.html" class="btn">Ver Más Vinilos</a>-->
     </section>

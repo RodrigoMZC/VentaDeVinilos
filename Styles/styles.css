@@ -115,33 +115,132 @@ body {
     margin-left: 5px;
 }
 
-.sidebar {
+.cart-sidebar {
     position: fixed;
     top: 0;
-    right: -300px; /* Oculto por defecto */
-    width: 300px;
+    right: -350px;
+    width: 350px;
     height: 100%;
     background-color: #fff;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
-    overflow-y: auto;
-    transition: right 0.3s ease-in-out;
+    transition: right 1s ease;
     z-index: 1000;
     padding: 20px;
+    overflow-y: auto;
 }
 
-.sidebar.show {
-    right: 0;
+.cart-sidebar.open {
+    right: 0; /* Mostrar la barra */
 }
 
-.close-btn {
-    background: none;
+
+.cart-sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.cart-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-sidebar li {
+    margin-bottom: 10px;
+}
+
+.remove-item {
+    margin-left: 10px;
+    background: var(--color-boton);
+    color: var(--color-texto);
     border: none;
-    font-size: 1.5rem;
+    border-radius: 0.6rem;
+    padding: 5px 10px;
     cursor: pointer;
+}
+
+.purchase-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 1.5rem;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.close-modal {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
 }
+
+.purchase-modal, .modal-add-artista {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content, .modal-artist-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 1.5rem;
+    width: 50%;
+    max-height: 80%;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: red;
+}
+
+.btn-add-artista {
+    background-color: var(--color-boton);
+    color: var(--color-texto);
+    border: none;
+    border-radius: 0.6rem;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-add-artista:hover {
+    background-color: var(--color-boton-hover);
+}
+
+/*.modal-artist-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+}*/
+
 
 @media (max-width: 768px) {
     .main-nav {
@@ -173,7 +272,7 @@ section h2 {
     text-align: center;
 }
 
-.productos {
+.productos, .catalogo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -181,52 +280,76 @@ section h2 {
     text-align: center;
 }
 
-.productos h2{
+.productos h2, .catalogo h2 {
     width: 100%;
     text-align: center;
 }
 
-.catalogo {
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease
 }
 
-.catalogo h2 {
-    width: 100%;
-    text-align: center;
-}
 .vinilo-item {
-    border: 1px solid #dddddd;
+    border: 1px solid #ddd;
     margin: 0.5rem;
-    border-radius: 1.5rem;
     padding: 10px;
+    border-radius: 1.5rem;
     margin-bottom: 20px;
-    background-color: #ffffff;
+    background-color: #fff;
     text-align: center;
-    display: inline-block;
     width: 200px;
     height: 360px;
     overflow: hidden;
-    color: #333333;
+    color: #333;
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
+    display: inline-block;
 }
 
 .vinilo-item:hover {
     transform: scale(1.05);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
     height: 415px;
-    z-index: 10; 
+    z-index: 10;
 }
 
 .vinilo-item img {
-    width: 100%;
+    max-width: 100%;
     height: 200px; 
     border-radius: 0.8rem;
     object-fit: cover; 
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    background-color: var(--color-boton);
+    color: var(--color-texto);
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: var(--color-boton-hover);
 }
 
 .vinilo-item h3 {
@@ -544,8 +667,6 @@ section h2 {
 }
 
 
-
-/* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
     body {
         padding-top: 185px;

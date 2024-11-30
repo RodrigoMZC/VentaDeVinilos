@@ -22,10 +22,6 @@
     if (!$clienteData) {
         echo "Error: No se pudo recuperar la información del usuario.";
     }
-
-    if (!$direcciones) {
-        echo "Error: No se pudo recuperar las Direcciones.";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +30,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/../styles/styles.css">
+    <link rel="stylesheet" href="/Styles/styles.css">
 </head>
 <body>
     <?php include 'Includes/header.php'; ?>
@@ -44,7 +40,7 @@
             <!-- Formulario de perfil de usuario -->
             <div class="profile-form-container">
                 <h2>Perfil de Usuario</h2>
-                <form action="/Backend/Controllers/UsuarioController.php" method="POST" class="profile-form">
+                <form action="/Controllers/UsuarioController.php" method="POST" class="profile-form">
                     <input type="hidden" name="action" value="update_cliente">
 
                     <div class="campo">
@@ -84,7 +80,7 @@
             <!-- Formulario de Dirección -->
             <div class="address-form-container">
                 <h2>Direcciones</h2>
-                <form action="/Backend/Controllers/DireccionController.php" method="POST" class="address-form">
+                <form action="/Controllers/DireccionController.php" method="POST" class="address-form">
                     <input type="hidden" name="action" value="insert_direccion">
                     <!-- Campos de la dirección -->
                     <div class="campo">
@@ -125,7 +121,7 @@
                                 Descripción: <?php echo htmlspecialchars($direccion['dir_descrip']); ?>
 
                                 <!-- Botón para eliminar la dirección -->
-                                <form action="/Backend/Controllers/DireccionController.php" method="POST" onsubmit="return confirm('¿Estas seguro de eliminaresta la direccion?');">
+                                <form action="/Controllers/DireccionController.php" method="POST" onsubmit="return confirm('¿Estas seguro de eliminaresta la direccion?');">
                                     <input type="hidden" name="action" value="delete_direccion">
                                     <input type="hidden" name="dir_descrip" value="<?php echo $direccion['dir_descrip']; ?>">
                                     <button type="submit" class="btn-eliminar">Eliminar</button>

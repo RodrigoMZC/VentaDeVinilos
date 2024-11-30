@@ -1,6 +1,12 @@
 <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
     require_once __DIR__ . '/../Config/Connection.php';
     require_once __DIR__ . '/../Controllers/ViniloController.php';
+    require_once __DIR__ . '/../Controllers/UsuarioController.php';
+    require_once __DIR__ . '/../Controllers/DireccionController.php';
 
     $viniloController = new ViniloController($conn);
     $vinilos = $viniloController->obtenerVinilo();
@@ -9,6 +15,7 @@
         echo "Error: No se pudo recuperar la información de los vinilos.";
         $vinilos = [];
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -29,11 +36,14 @@
             <?php if (!empty($vinilos)): ?>
                 <?php foreach ($vinilos as $vinilo): ?>
                     <div class="vinilo-item">
-                        <img src="<?php echo htmlspecialchars($vinilo['vin_imgURL']);?>" alt="<?php echo htmlspecialchars($vinilo['vin_nombre']);?>">
+                        <img src="<?php echo htmlspecialchars($vinilo['vin_imgURL']);?>" 
+                            alt="<?php echo htmlspecialchars($vinilo['vin_nombre']);?>">
                         <h3><?php echo htmlspecialchars($vinilo['vin_nombre']); ?></h3>
                         <h3><?php echo htmlspecialchars($vinilo['art_nombre']); ?></h3>
                         <p>Precio: $<?php echo htmlspecialchars($vinilo['vin_precio']); ?></p>
-                        <button class="btn-compra" onclick="addToCart(<?php echo htmlspecialchars($vinilo['vin_id']); ?>)">Agregar</button>
+                        <button class="btn-compra" data-id="<?php echo $vinilo['vin_id']; ?>" 
+                            data-name="<?php echo htmlspecialchars($vinilo['vin_nombre']); ?>" 
+                            data-price="<?php echo htmlspecialchars($vinilo['vin_precio']); ?>">Agregar</button>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>

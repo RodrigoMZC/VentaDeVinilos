@@ -1,4 +1,5 @@
 <?php
+
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
     }
@@ -6,6 +7,8 @@
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
+    
+    
 ?>
 
 <!DOCTYPE html>
@@ -14,17 +17,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Styles/styles.css">
-    
+    <script src="/Scripts/Carrito.js"></script>
+    <script defer src="/Scripts/Compra.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <script src="/../Scripts/Carrito.js"></script>
     <header class="header">
         <nav class="main-nav">
             <div class="div-main-nav">
                 <div class="right-nav">
                     <div class="logo">
-                        <a class="mian-logo" href="../index.php">
+                        <a class="mian-logo" href="../../index.php">
                             <!--<img src="images/logo.png" alt="LOGO" class="logo">-->
                             LOGO
                         </a>
@@ -80,7 +83,7 @@
                         <li class="left-nav-item">
                             <div class="user-logout-container">
                                 <!-- Formulario para cerrar sesión -->
-                                <form action="/Backend/Views/Includes/Logout.php" method="POST">
+                                <form action="/Views/Includes/Logout.php" method="POST">
                                     <button class="person-button-header" type="submit" action="/Views/Includes/Logout.php" method="POST">
                                     <span class="person-icon" style="margin-right: 5px;">
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="24" width="24">
@@ -96,7 +99,7 @@
                     <?php else: ?>
                         <!-- Si el usuario NO ha iniciado sesión, mostrar el botón de "Iniciar sesión" -->
                         <li class="left-nav-item">
-                            <a target="_self" rel="noreferrer" class="person-button-header" id="nav-person" label="LogIn" href="/Views/Login.php">
+                            <a target="_self" rel="noreferrer" class="person-button-header" id="nav-person" label="LogIn" href="../Views/Login.php">
                                     <span class="person-icon">
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="24" width="24">
                                             <path fill-rule="evenodd" d="M16.75 6.25a4.75 4.75 0 1 1-9.5 0 4.75 4.75 0 0 1 9.5 0Zm-1.5 0a3.25 3.25 0 1 1-6.5 0 3.25 3.25 0 0 1 6.5 0Z M12 12.5c-2.397 0-4.827.238-6.684.991-.935.38-1.767.907-2.367 1.64-.611.746-.949 1.665-.949 2.752V20h1.5v-2.117c0-.753.226-1.334.61-1.802.393-.48.986-.881 1.77-1.2C7.464 14.238 9.66 14 12 14c2.348 0 4.542.214 6.124.845.783.312 1.373.71 1.765 1.192.382.47.61 1.063.61 1.847L20.5 20H22v-2.116c0-1.107-.335-2.04-.947-2.793-.602-.74-1.436-1.266-2.374-1.64-1.858-.74-4.29-.951-6.679-.951Z"></path>
@@ -117,7 +120,7 @@
 
                         <li class="left-nav-item">
                             <div class="bag-button-header-container">
-                                <button class="bag-button-header" type="button" onclick="toggleSidebar()">
+                                <button id="cart-button" class="bag-button-header" type="button">
                                     <span class="bag-icon">
                                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" height="24" width="24">
                                             <path fill-rule="evenodd" d="M12 2c-1.17 0-2.436.262-3.437.853-1.02.601-1.813 1.586-1.813 2.97v1.178H5.126L2 7.003V21h20V7h-4.75V5.872c0-1.4-.783-2.399-1.806-3.011C14.442 2.26 13.174 2 12 2Zm3.75 6.5V12h1.5V8.5h3.25v11h-17V8.502h3.25V12h1.5V8.5h7.5Zm0-1.5V5.872c0-.75-.389-1.313-1.076-1.724-.71-.424-1.692-.648-2.674-.648-.977 0-1.961.224-2.674.644-.694.41-1.076.962-1.076 1.679v1.178L15.75 7Z"></path>
@@ -125,25 +128,64 @@
                                     </span>
                                 </button>
                             </div>
-
-                            <div id="cartSidebar" class="sidebar">
-                                <button class="close-btn" onclick="toggleSidebar()">✖</button>
-                                <h2>Tu Carrito</h2>
-                                <div id="cartItems">
-                                    <?php if (!empty($_SESSION['cart'])): ?>
-                                        <?php foreach ($_SESSION['cart'] as $item): ?>
-                                            <div class="cart-item">
-                                                <p><?php echo htmlspecialchars($item['vin_nombre']); ?></p>
-                                                <p>Precio: $<?php echo htmlspecialchars($item['vin_precio']); ?></p>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                    <p>Tu carrito está vacío.</p>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
                         </li>
+                        <!-- Carrito de Compras -->
+                        <div id="cart-sidebar" class="cart-sidebar">
+                            <h2>Carrito de Compras</h2>
+                            <ul id="cart-items">
+                            <!-- Los productos se agregarán dinámicamente aquí -->
+                            <?php if (!empty($_SESSION['cart'])): ?>
+                                <?php foreach ($_SESSION['cart'] as $item): ?>
+                                    <li>
+                                        <?php echo htmlspecialchars($item['name']) . ' - $' . htmlspecialchars($item['price']); ?>
+                                        <button class="remove-item" data-id="<?php echo $item['id']; ?>">Eliminar</button>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <li>Tu carrito está vacío.</li>
+                            <?php endif; ?>
+                            </ul>
+
+                            <?php if (!empty($_SESSION['cart'])): ?>    
+                                <button id="purchase-button" class="purchase-button">Realizar Compra</button>
+                            <?php endif; ?>
+                            <button id="close-sidebar" class="close-sidebar">Cerrar</button>
+                        </div>
+                            <!-- Modal para Confirmar Compra -->
+                        <div id="purchase-modal" class="purchase-modal" style="display: none;">
+                            <div class="modal-content">
+                                <span id="close-modal" class="close-modal">&times;</span>
+                                <h2>Confirmar Compra</h2>
+                                <h3>Productos:</h3>
+                                <ul id="modal-cart-items">
+                                    <?php foreach ($_SESSION['cart'] as $item): ?>
+                                        <li>
+                                            <?php echo htmlspecialchars($item['name']) . ' - $' . htmlspecialchars($item['price']); ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                                <p>Total: $    
+                                    <?php echo array_reduce($_SESSION['cart'], fn($total, $item) => $total + $item['price'], 0); ?>
+                                </p>
+
+                                <h3>Selecciona una Dirección:</h3>
+                                <?php if (!empty($direcciones)): ?>
+                                    <ul>
+                                        <?php foreach ($direcciones as $direccion): ?>
+                                        <li>
+                                            <input type="radio" name="direccion" value="<?php echo $direccion['dir_id']; ?>" required>
+                                            <?php echo htmlspecialchars($direccion['dic_direccion']) . ', ' . htmlspecialchars($direccion['dir_ciudad']) . ', ' . htmlspecialchars($direccion['dir_estado']); ?>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <button id="confirm-purchase" class="confirm-purchase">Confirmar Compra</button>
+                                    <?php else: ?>
+                                        <p>No tienes direcciones guardadas. <a href="/Views/Perfil.php">Agrega una dirección aquí</a>.</p>
+                                <?php endif; ?>
+                        </div>
+
                     </ul>
+
                 </div>
             </div>
         </nav>

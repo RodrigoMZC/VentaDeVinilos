@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../Styles/styles.css">
-    <script defer src="/Scripts/Dashboard.js"></script>
+    <!--<link rel="stylesheet" href="styles/styles.css">-->
+    <script defer src="../Scripts/Dashboard.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
 
     <section class="dashboard">
         <div class="artista-dashboard-container">
-            <button class="btn-add-artista">Agregar Artista</button>
+            <button id="btn-add-artista" class="btn-add-artista">Agregar Artista</button>
         </div>
 
     </section>

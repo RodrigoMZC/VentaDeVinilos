@@ -1,6 +1,6 @@
-document.addEventLostener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById('add-artista-modal');
-    const btnModal = document.querySelector('.btn-add-artista');
+    const btnModal = document.getElementById('btn-add-artista');
     const btnClose = document.querySelector('.close-modal');
 
     btnModal.addEventListener('click', () => {

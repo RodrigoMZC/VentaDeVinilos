@@ -8,6 +8,8 @@
     --color-fondo-input: #efefef;
     --color-borde-producto: #dddddd;   
     --color-texto-claro: #cfcfcf;
+    --color-boton-rojo: #bc3535;
+    --color-boton-editar: #89ADB0;
 }
 * {
     margin: 0;
@@ -129,7 +131,7 @@ body {
 }
 
 .cart-sidebar.open {
-    right: 0; /* Mostrar la barra */
+    right: 0;
 }
 
 
@@ -185,10 +187,10 @@ body {
     right: 20px;
     font-size: 24px;
     cursor: pointer;
-    color: red;
+    color: var(--color-boton-rojo);
 }
 
-.purchase-modal, .modal-add-artista {
+.purchase-modal, .modal-add-dashboard {
     display: none;
     position: fixed;
     top: 0;
@@ -201,7 +203,7 @@ body {
     align-items: center;
 }
 
-.modal-content, .modal-artist-content {
+.modal-content, .modal-add-dasboard-content {
     background-color: white;
     padding: 20px;
     border-radius: 1.5rem;
@@ -209,38 +211,154 @@ body {
     max-height: 80%;
     overflow-y: auto;
     text-align: center;
+    overflow: auto; 
+    scrollbar-width: none;
 }
 
-.close-modal {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 24px;
-    cursor: pointer;
-    color: red;
-}
-
-.btn-add-artista {
+.btn-add-dashboard {
     background-color: var(--color-boton);
-    color: var(--color-texto);
+    color: var(--color-fondo);
     border: none;
     border-radius: 0.6rem;
     padding: 5px 10px;
     cursor: pointer;
 }
 
-.btn-add-artista:hover {
+.btn-add-dashboard:hover {
     background-color: var(--color-boton-hover);
 }
 
-/*.modal-artist-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    position: relative;
-}*/
+.dashboard-imputs {
+    width: 100%;
+    height: 3.5rem;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--color-borde-input);
+    border-radius: 0.6rem;
+    box-sizing: border-box;
+    font-size: 16px;
+}
 
+.dashboard-imputs:focus {
+    outline: none;
+    border-color: #333333;
+}
+
+.btn-dasboard-modals {
+    background-color: var(--color-boton);
+    color: var(--color-fondo);
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: none;
+    border-radius: 0.6rem;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    text-transform: none;
+}
+
+.btn-dasboard-modals:hover {
+    background-color: #cc7b7a;
+}
+ 
+.tabs-dashboards-container {
+    width: 80%; 
+    margin: 0.5rem auto;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 1.5rem;
+}
+
+.tabs-dashboards-container h2 {
+    text-align: center; 
+    font-size: 24px; 
+    color: #333; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.table-vinilos {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-vinilos th, .table-vinilos td {
+    padding: 10px; 
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-vinilos th {
+    background-color: var(--color-boton); 
+    color: white; 
+    font-weight: bold;
+}
+
+.table-vinilos tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-vinilos tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table-vinilos td[colspan="6"] {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+}
+
+/**/
+.table-ventas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-ventas th, .table-ventas td {
+    padding: 10px; 
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-ventas th {
+    background-color: var(--color-boton); 
+    color: white; 
+    font-weight: bold;
+}
+
+.table-ventas tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-ventas tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.table-ventas td[colspan="6"] {
+    text-align: center;
+    color: #555;
+    font-style: italic;
+}
+
+.btn-dashboard-edit, .btn-dashboard-delete, .btn-dashboard-delivered {
+    background-color: #89ADB0;
+    width: 80px;
+    color: var(--color-fondo);
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    border-radius: 0.6rem;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.btn-dashboard-delete {
+    background-color: var(--color-boton-rojo);
+}
 
 @media (max-width: 768px) {
     .main-nav {
@@ -303,7 +421,7 @@ section h2 {
     padding: 10px;
     border-radius: 1.5rem;
     margin-bottom: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     text-align: center;
     width: 200px;
     height: 360px;
@@ -659,13 +777,11 @@ section h2 {
     background-color: var(--color-boton-hover);
 }
 
-/* Deshabilitar edición del campo de fecha de nacimiento */
 .campo input[type="date"][readonly] {
     background-color: #e0e0e0;
     color: var(--color-texto-claro);
     cursor: not-allowed;
 }
-
 
 @media (max-width: 768px) {
     body {
@@ -702,7 +818,7 @@ section h2 {
     }
 
     .profile-form-container, .address-form-container, .address-list-container {
-        flex: 1 1 100%; /* Full width on small screens */
+        flex: 1 1 100%;
     }
 }
 

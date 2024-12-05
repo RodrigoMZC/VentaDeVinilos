@@ -21,14 +21,30 @@
     
             return $this->compra->registrarCompra($cli_id, $direccion_id, $carrito);
         }
+
+        public function obtenerCompras() {
+            return $this->compra->obtenerCompras();
+        }
+
+        public function eliminarCompra($comp_id) {
+            return $this->compra->eliminarCompra($comp_id);
+        }
+
+        public function actualizarEstadoEntrega($comp_id) {
+            return $this->compra->actualizarEstadoEntrega($comp_id);
+        }
+        
     }
 
-    // Manejo de solicitudes POST
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-        session_start();
-    
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $compraController = new CompraController($conn);
+
+        // Verificar la acción es 'check'
         if ($_POST['action'] === 'check') {
-            // Verificar si el usuario ha iniciado sesión
             if (!isset($_SESSION['cli_id'])) {
                 echo json_encode(['success' => false, 'redirect' => '/Views/Login.php']);
                 exit;
@@ -52,11 +68,23 @@
             $direccion_id = $_POST['direccion'] ?? null;
             $carrito = $_SESSION['cart'];
     
-            $compraController = new CompraController($conn);
             $response = $compraController->realizarCompra($cli_id, $direccion_id, $carrito);
-    
             echo json_encode($response);
             exit;
+        }
+
+        // Verificar si la acción es 'entregar'
+        if ($_POST['action'] === 'entregar') {
+            if (isset($_POST['comp_id'])) {
+                $comp_id = $_POST['comp_id'];
+                // Llamar al método para actualizar el estado de entrega
+                $response = $compraController->actualizarEstadoEntrega($comp_id);
+                echo json_encode($response);
+                exit;
+            } else {
+                echo json_encode(['status' => 'error', 'message' => 'ID de compra no proporcionado.']);
+                exit;
+            }
         }
     }
 

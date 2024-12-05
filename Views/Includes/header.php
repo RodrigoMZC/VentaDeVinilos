@@ -54,6 +54,13 @@
 
                 <div class="left-nav">
                     <ul class="ul-left-nav">
+
+                        <li class="left-nav-item"> 
+                            <a class="a-nav-item" href="/Views/Dashboard.php">
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
                         <li class="left-nav-item"> 
                             <button class="search-button-header" type="button">
                                 <span class="search-icon">
@@ -66,7 +73,7 @@
                         
                         <!-- Verificar si el usuario ha iniciado sesión -->
                     <?php if (isset($_SESSION['usr_usuario'])): ?>
-                    <!-- Si el usuario ha iniciado sesión, mostrar su nombre y un botón para cerrar sesión -->
+                    <!-- Si el usuario ha iniciado sesion mostrar su nombre y un botón para cerrar sesión -->
                         <li class="left-nav-item">
                             <div class="user-info-container">
                                 <a class="a-nav-item" href="/Views/Perfil.php">
@@ -82,7 +89,7 @@
 
                         <li class="left-nav-item">
                             <div class="user-logout-container">
-                                <!-- Formulario para cerrar sesión -->
+                                <!-- Formulario para cerrar sesion -->
                                 <form action="/Views/Includes/Logout.php" method="POST">
                                     <button class="person-button-header" type="submit" action="/Views/Includes/Logout.php" method="POST">
                                     <span class="person-icon" style="margin-right: 5px;">
@@ -97,7 +104,7 @@
                         </li>
 
                     <?php else: ?>
-                        <!-- Si el usuario NO ha iniciado sesión, mostrar el botón de "Iniciar sesión" -->
+                        <!-- Si el usuario NO ha iniciado sesion mostrar el botón de "Iniciar sesión" -->
                         <li class="left-nav-item">
                             <a target="_self" rel="noreferrer" class="person-button-header" id="nav-person" label="LogIn" href="../Views/Login.php">
                                     <span class="person-icon">

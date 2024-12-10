@@ -15,24 +15,6 @@
         echo "Error: No se pudo recuperar la información de los vinilos.";
     }
 
-    /*if (!isset($_SESSION['usr_id'])) {
-        header("Location: /Views/Login.php");
-        exit;
-    }
-
-    $usr_id = $_SESSION['usr_id'];
-
-    $auth = new Autenticacion($conn);
-    $dir  = new DireccionController($conn); 
-
-    $clienteData = $auth->obtenerCliente($usr_id);
-    $direcciones = $dir->obtenerDireccion($usr_id);
-
-    if (!$clienteData) {
-        echo "Error: No se pudo recuperar la información del usuario.";
-    }*/
-
-// Incluir el header
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +35,7 @@
         <h2>Destacados</h2>
         <div class="producto">
             <div class="carousel-container">
-                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-btn prev">&#10094;</button>
                 <div class="carousel">
                     <?php if (!empty($vinilos)): ; ?>
                         <?php for ($i = 0; $i < 10; $i++): ?>
@@ -69,7 +51,7 @@
                         <span>No se encontraron vinilos para mostrar.</span>
                     <?php endif; ?>
                 </div>
-                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+                <button class="carousel-btn next">&#10095;</button>
             </div>
         </div>
         <!--<a href="productos.html" class="btn">Ver Más Vinilos</a>-->

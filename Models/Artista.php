@@ -23,22 +23,24 @@
 
         public function agregarArtista($data) {
             try {
-                $query = "CALL agregarArtista(:nombre, :desc, :fNacim, :lugNacim, :imgURL, :generos)";
+                $query = "CALL agregarArtista(:nombre, :desc, :anioNacimiento, :lugNacim, :imgURL, :generos)";
                 $stmt = $this->conn->prepare($query);
-
-                $stmt->bindParam('nombre', $data['art_nombre']);
-                $stmt->bindParam('desc', $data['art_desc']);
-                $stmt->bindParam('fNacim', $data['art_fNacim']);
-                $stmt->bindParam('lugNacim', $data['art_lugNaci']);
-                $stmt->bindParam('imgURL', $data['art_imgURL']);
-                $stmt->bindParam('generos', json_encode($data['art_generos']), PDO::PARAM_STR);
-
+        
+                $stmt->bindParam(':nombre', $data['art_nombre'], PDO::PARAM_STR);
+                $stmt->bindParam(':desc', $data['art_desc'], PDO::PARAM_STR);
+                $stmt->bindParam(':anioNacimiento', $data['art_fNacim'], PDO::PARAM_INT);
+                $stmt->bindParam(':lugNacim', $data['art_lugNaci'], PDO::PARAM_STR);
+                $stmt->bindParam(':imgURL', $data['art_imgURL'], PDO::PARAM_STR);
+        
+                // Manejar el JSON de generos
+                $generosJSON = json_encode($data['art_generos']);
+                $stmt->bindParam(':generos', $generosJSON, PDO::PARAM_STR);
+        
                 return $stmt->execute();
             } catch (PDOException $e) {
-                echo "Error al agregar artista: " . $e->getMessage();
-                return false; 
-            } 
+                throw new Exception("Error al agregar artista: " . $e->getMessage());
+            }
         }
+               
     }
-
 ?>

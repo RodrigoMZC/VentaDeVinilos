@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:8889
--- Tiempo de generación: 23-11-2024 a las 06:31:31
+-- Tiempo de generación: 10-12-2024 a las 03:38:48
 -- Versión del servidor: 5.7.39
 -- Versión de PHP: 8.2.0
 
@@ -31,7 +31,7 @@ CREATE TABLE `artista` (
   `art_id` int(11) NOT NULL,
   `art_nombre` varchar(255) NOT NULL,
   `art_desc` text NOT NULL,
-  `art_fNacim` year(4) NOT NULL,
+  `art_fNacim` year(4) DEFAULT NULL,
   `art_lugNaci` varchar(255) NOT NULL,
   `art_imgURL` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -49,7 +49,8 @@ INSERT INTO `artista` (`art_id`, `art_nombre`, `art_desc`, `art_fNacim`, `art_lu
 (8, 'Enjambre', 'Formada alrededor del talento de los hermanos Luis y Rafael Navejas, los rockeros retro Enjambre, originarios de la Ciudad de México, lanzaron su álbum debut Consuelo en Domingo en 2005. Tras obtener cierto éxito regional, los hermanos sumaron a su hermano menor Julián al grupo, junto con los amigos de toda la vida Ángel Sánchez y Javier Mejía. En 2008, lanzaron El Segundo Es Felino, lo que les valió un contrato con EMI. Su aclamado debut con la disquera, Daltónico, llegó en 2010. En 2012, la banda lanzó su esperado cuarto álbum de estudio, Huéspedes del Orbe, seguido en 2015 por Proaño, producido por Phil Vinall. Su sexto disco, Imperfecto Extraño, salió en 2017.', 2008, 'México', 'https://i.imgur.com/Dtu6zXA.png'),
 (9, 'Luis Miguel', 'Luis Miguel es uno de los baladistas más poderosos y versátiles de la música latina. Apodado \"El Sol de México\" por su voz dorada, el cantante ha sacado el máximo provecho de su amplio rango vocal en baladas pop soleadas, canciones de amor desgarradoras y alegres pistas de mariachi. Nacido como Luis Miguel Gallego Basteri en 1970 en Puerto Rico, de padre español y madre italiana, se mudó con su familia a México cuando era niño. Bajo el estímulo de su padre músico, el prodigioso joven logró un lugar en la televisión nacional, interpretando el huapango clásico \"La Malagueña\" y mostrando su falsete único y su increíble control vocal a tan solo 11 años. A finales de esa década, Luis Miguel reavivó el interés de los oyentes por un estilo clásico de crooner melancólico, popularizado por predecesores del pop romántico como José José, con la nostálgica canción \"La Incondicional\" de 1988. Sin embargo, otros grandes éxitos como \"Ahora Te Puedes Marchar\", una pegajosa canción pop, demostraron su destreza en la pista de baile. Retomó el rol de líder del crooner latino y popularizó los boleros con el lanzamiento de Romance en 1991, que pasó 32 semanas en el primer lugar de la lista de Álbumes de Pop Latino de Billboard, un logro raro en esa época para un cantante de habla hispana. En los años 2000, Luis Miguel colaboró con Michael Jackson para la canción homenaje al 9/11 Todo Para Ti y conquistó la música regional mexicana con álbumes posteriores como ¡MÉXICO Por Siempre! de 2017.', 1970, 'San Juan, Purto Rico, Estados Unidos', 'https://i.imgur.com/t0VPNEm.png'),
 (10, 'Ice Nine Kills', 'Originalmente formada como una banda de ska-punk, la banda estadounidense de \"theatricore\" ICE NINE KILLS tomó su nombre de la sustancia letal en la novela Cat’s Cradle de Kurt Vonnegut.\r\nObtuvieron su primer éxito con The Predator Becomes the Prey (2014), que llegó al Top 20 en la lista de Hard Rock de Billboard. Un ambicioso álbum conceptual inspirado en películas de terror, The Silver Scream (2018), fue un éxito en el Top 30 de Pop. La actriz de Stranger Things, Chelsea Talmadge, aportó voces invitadas en la oscura y cinematográfica \"Love Bites\" de The Silver Scream. En 2019, Matt Heafy, líder de Trivium, colaboró con la banda en una versión acústica de \"Stabbing in the Dark\", lanzada en la edición expandida de The Silver Scream (FINAL CUT). En 2020, presentaron The Silent Stream, un evento en vivo de Halloween que combinó imágenes de conciertos de 2019 con escenas representadas de los miembros de la banda y un acosador enmascarado.', 2002, 'Boston, MA, Estados Unidos', 'https://i.imgur.com/ojEfJwO.png'),
-(11, 'Don Omar', 'Dotado de una poderosa voz que corta limpiamente a través de ritmos pesados de sintetizadores, Don Omar emergió como una de las figuras clave en la explosión internacional del reggaetón a principios de los 2000. Nacido William Omar Landrón Rivera en 1978 en el barrio Santurce de San Juan, Puerto Rico, era un adolescente cuando el género comenzó a tomar forma en los 90, y creció bajo la tutela de artistas pioneros como Luny Tunes y Noriega, ganando experiencia con mixtapes. Con su éxito de 2003, “Dale Don Dale”, Don Omar perfeccionó su estilo, alternando entre un rap-canto monotónico inspirado en dancehall y ganchos melódicos entregados con un trino flamenco. En el mismo año, “Dile” combinó los característicos tambores del reggaetón con bachata, consolidando a Omar como un embajador de los sonidos puertorriqueños.\r\n\r\nQue el sonido obrero del reggaetón aún enfrentara críticas gubernamentales hizo que el éxito de Don Omar fuera aún más dulce. Tras su debut en 2003 con The Last Don, el álbum King of Kings (2006) rompió barreras, convirtiéndose en el álbum de reggaetón mejor clasificado, debutando en la cima de la lista Billboard Top Latin Albums y alcanzando el puesto 7 en el Billboard 200. Pero Don Omar no estaba interesado en mantenerse en su zona de confort estilística. Para Danza Kuduro (2010), Omar se asoció con el músico portugués-francés Lucenzo, fusionando reggaetón con sonidos angoleños. Aunque anunció su retiro en 2017, regresó en 2019 con The Last Album; al año siguiente, Bad Bunny lo invitó a colaborar en “PA’ ROMPERLA”, pasando el testigo y confirmando el estatus de Omar en la historia de la música urbana.', 1978, 'Trappes, Francia', 'https://i.imgur.com/HPNKSOI.png');
+(11, 'Don Omar', 'Dotado de una poderosa voz que corta limpiamente a través de ritmos pesados de sintetizadores, Don Omar emergió como una de las figuras clave en la explosión internacional del reggaetón a principios de los 2000. Nacido William Omar Landrón Rivera en 1978 en el barrio Santurce de San Juan, Puerto Rico, era un adolescente cuando el género comenzó a tomar forma en los 90, y creció bajo la tutela de artistas pioneros como Luny Tunes y Noriega, ganando experiencia con mixtapes. Con su éxito de 2003, “Dale Don Dale”, Don Omar perfeccionó su estilo, alternando entre un rap-canto monotónico inspirado en dancehall y ganchos melódicos entregados con un trino flamenco. En el mismo año, “Dile” combinó los característicos tambores del reggaetón con bachata, consolidando a Omar como un embajador de los sonidos puertorriqueños.\r\n\r\nQue el sonido obrero del reggaetón aún enfrentara críticas gubernamentales hizo que el éxito de Don Omar fuera aún más dulce. Tras su debut en 2003 con The Last Don, el álbum King of Kings (2006) rompió barreras, convirtiéndose en el álbum de reggaetón mejor clasificado, debutando en la cima de la lista Billboard Top Latin Albums y alcanzando el puesto 7 en el Billboard 200. Pero Don Omar no estaba interesado en mantenerse en su zona de confort estilística. Para Danza Kuduro (2010), Omar se asoció con el músico portugués-francés Lucenzo, fusionando reggaetón con sonidos angoleños. Aunque anunció su retiro en 2017, regresó en 2019 con The Last Album; al año siguiente, Bad Bunny lo invitó a colaborar en “PA’ ROMPERLA”, pasando el testigo y confirmando el estatus de Omar en la historia de la música urbana.', 1978, 'Trappes, Francia', 'https://i.imgur.com/HPNKSOI.png'),
+(12, 'Pierce The Veil', 'Los rockeros post-emo de San Diego, Pierce the Veil, han encantado a sus fans con letras identificables y grandes arreglos desde 2007.\r\n\r\nLos hermanos Vic y Mike Fuentes, que comenzaron a tocar juntos en la preparatoria bajo el nombre Before Today, cambiaron el nombre de su banda a Pierce the Veil, un término que Vic aprendió en una clase de sociología en la universidad.\r\nSu padre, el músico de jazz y pintor Victor Gamboa Fuentes, les enseñó a tocar guitarra cuando estaban en la escuela primaria.\r\nEl sencillo de 2012 de Pierce the Veil, “King for a Day”, contó con la colaboración vocal de Kellin Quinn, de Sleeping with Sirens.\r\nEl sencillo principal del álbum Misadventures de 2015, “The Divine Zero”, toma su título del nombre del héroe en la película The Grand Budapest Hotel de Wes Anderson (2014).\r\nEl ex VJ de MTV Matt Pinfield protagonizó como el dueño canoso de un hotel espeluznante en el video del sencillo “Circle” de la banda, lanzado en 2016.\r\nMisadventures, el cuarto álbum de la banda, alcanzó el puesto número 4 en el Billboard 200 en 2016.', 2006, 'San Diego, CA, United States', 'https://i.imgur.com/ccUxJ1h.png');
 
 -- --------------------------------------------------------
 
@@ -75,6 +76,7 @@ INSERT INTO `art_gen` (`art_id`, `gen_id`) VALUES
 (3, 17),
 (4, 17),
 (8, 17),
+(12, 17),
 (4, 18),
 (8, 18),
 (11, 23),
@@ -126,7 +128,11 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`cli_id`, `cli_email`, `cli_nombre`, `cli_sNombre`, `cli_apelloidos`, `cli_fNacimiento`, `cli_rfc`, `usr_id`) VALUES
-(6, 'rodrigomazuca3@gmail.com', 'Rodrigo', '', 'Mazuca', '2003-12-31', 'MARR0311231HCLZMDA1', 10);
+(6, 'rodrigomazuca3@gmail.com', 'Rodrigo', '', 'Mazuca', '2003-12-31', 'MARR0311231HCLZMDA1', 10),
+(7, 'fer@gmail.com', 'Fernanda', '', 'Ramirez Moralez', '2003-12-31', 'MARR0311231MC', 11),
+(8, 'vmtg208@hotmail.com', 'Victor', 'Manuel', 'Tijerina', '1693-12-22', 'VECJ880326XXX', 12),
+(9, 'correo.correo@gmail.com', 'gael', '', 'costilla', '1800-02-12', 'VECJ880326XS1', 14),
+(10, 'rodrigo123@gmail.com', 'Rodrigo', '', 'Mazuca', '2003-12-12', 'VECJ880326X21', 15);
 
 -- --------------------------------------------------------
 
@@ -143,6 +149,43 @@ CREATE TABLE `compra` (
   `cli_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`comp_id`, `comp_status`, `comp_fPedio`, `comp_fEntrega`, `comp_total`, `cli_id`) VALUES
+(1, 'Entregado', '2024-11-25', '2024-12-03 21:44:01', '3300.00', 6),
+(2, 'Entregado', '2024-11-27', '2024-12-03 21:51:46', '1100.00', 6),
+(3, 'Entregado', '2024-12-02', '2024-12-03 22:39:31', '3900.00', 6),
+(4, 'Entregado', '2024-12-03', '2024-12-03 22:51:49', '3200.00', 6),
+(5, 'Entregado', '2024-12-03', '2024-12-03 22:55:54', '3600.00', 6),
+(6, 'Entregado', '2024-12-03', '2024-12-03 22:56:46', '3600.00', 6),
+(7, 'Entregado', '2024-12-07', '2024-12-08 04:05:05', '2200.00', 6),
+(8, 'Entregado', '2024-12-07', '2024-12-09 12:49:30', '2200.00', 6),
+(9, 'Entregado', '2024-12-09', '2024-12-09 12:49:28', '1800.00', 6),
+(10, 'Entregado', '2024-12-09', '2024-12-09 12:49:20', '1100.00', 6);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `compras_vinilos_detalles`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `compras_vinilos_detalles` (
+`comp_id` int(11)
+,`comp_status` varchar(255)
+,`comp_fPedio` date
+,`comp_fEntrega` datetime
+,`comp_total` decimal(10,2)
+,`cli_id` int(11)
+,`cli_nombre` varchar(100)
+,`cli_apellido` varchar(255)
+,`cli_email` varchar(255)
+,`cli_rfc` varchar(255)
+,`vin_nombre` varchar(255)
+,`precio` decimal(10,2)
+);
+
 -- --------------------------------------------------------
 
 --
@@ -153,6 +196,29 @@ CREATE TABLE `comp_vin` (
   `comp_id` int(11) NOT NULL,
   `vin_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `comp_vin`
+--
+
+INSERT INTO `comp_vin` (`comp_id`, `vin_id`) VALUES
+(4, 34),
+(9, 37),
+(9, 38),
+(5, 41),
+(6, 41),
+(2, 42),
+(10, 43),
+(4, 44),
+(1, 45),
+(5, 48),
+(6, 48),
+(7, 48),
+(8, 48),
+(4, 51),
+(1, 55),
+(3, 60),
+(3, 61);
 
 -- --------------------------------------------------------
 
@@ -175,7 +241,9 @@ CREATE TABLE `direccion` (
 --
 
 INSERT INTO `direccion` (`dir_id`, `dir_estado`, `dir_ciudad`, `dir_cPostal`, `dic_direccion`, `dir_descrip`, `cli_id`) VALUES
-(1, 'Coahuila', 'Matamoros', '27440', 'Gonzalez #230', 'Tapiceria Blanca', 6);
+(1, 'Coahuila', 'Matamoros', '27440', 'Gonzalez #230', 'Tapiceria Blanca', 6),
+(2, 'Coahuila', 'Matamoros', '27440', 'Zaragoza #230s', 'Casa Blanca', 6),
+(3, 'coahuila', 'torreon', '27000', 'calle sesamo 123', 'casa con ventana a la derecha ', 6);
 
 -- --------------------------------------------------------
 
@@ -301,7 +369,12 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`usr_id`, `usr_usuario`, `usr_pword`, `usr_fCreacion`) VALUES
-(10, 'rodrigo', 0x24327924313024716635794d5453756e476d39664c506b73667179374f7279347a53704d6c6e4638452e52456f694a566f58594262766d344e716a43, '2024-11-09 19:40:23');
+(10, 'rodrigo', 0x24327924313024716635794d5453756e476d39664c506b73667179374f7279347a53704d6c6e4638452e52456f694a566f58594262766d344e716a43, '2024-11-09 19:40:23'),
+(11, 'fernanda', 0x243279243130245459716d766a6a5a4d62725766683730395a395841654d7a41767a476975424a6a52543045726e554c436e5571566d7348786f6e4f, '2024-11-25 19:07:07'),
+(12, 'vector22', 0x24327924313024793753422e6b54756e37544376365342384163486b2e59596a616d6d335a38784174717751354d4235717737676a5763763174484b, '2024-12-09 07:18:49'),
+(13, 'papu', 0x24327924313024626d683151396e7a544a46757a653561534e744f364f52714352764f394c54636441652f552f6b515a72623544787a614f504c4e4b, '2024-12-09 07:20:19'),
+(14, 'nombreusuario', 0x243279243130242e6443595a364c2f74517467314b685477412e367065784d6c2e536d6f453244384f50584a704f785375374134387a42412e634343, '2024-12-09 12:36:24'),
+(15, 'rodrigo123', 0x243279243130243333797273797468694f6250654b42773232753352754a696245673631692f534634322f30706869306e47664758566f307157524f, '2024-12-09 20:29:42');
 
 -- --------------------------------------------------------
 
@@ -326,28 +399,28 @@ CREATE TABLE `vinilo` (
 INSERT INTO `vinilo` (`vin_id`, `vin_nombre`, `vin_fLanz`, `vin_stok`, `vin_imgURL`, `art_id`, `vin_precio`) VALUES
 (32, 'After Midnight: The Complete Session', '1956-08-15', 21, 'https://i.imgur.com/G2a3xDY.jpg', 6, '1200.00'),
 (33, '40 y 20', '1992-11-24', 33, 'https://i.imgur.com/qPTLxSQ.jpg', 5, '1800.00'),
-(34, 'Amor Amor', '1980-01-01', 12, 'https://i.imgur.com/R6J8ifZ.jpg', 5, '1300.00'),
-(37, 'Ballads of the Day', '1956-04-01', 8, 'https://i.imgur.com/OwHaaAt.jpg', 6, '900.00'),
-(38, 'Cole Español', '1958-01-01', 12, 'https://i.imgur.com/uZlRJMQ.jpg', 6, '900.00'),
+(34, 'Amor Amor', '1980-01-01', 11, 'https://i.imgur.com/R6J8ifZ.jpg', 5, '1300.00'),
+(37, 'Ballads of the Day', '1956-04-01', 7, 'https://i.imgur.com/OwHaaAt.jpg', 6, '900.00'),
+(38, 'Cole Español', '1958-01-01', 11, 'https://i.imgur.com/uZlRJMQ.jpg', 6, '900.00'),
 (40, 'Vices & Virtues (Deluxe Edition)', '2011-03-22', 9, 'https://i.imgur.com/OUNtAh7.jpg', 3, '1400.00'),
-(41, 'Too Weird to Live, Too Rare to Die!', '2013-10-08', 14, 'https://i.imgur.com/OvVX7CV.jpg', 3, '1400.00'),
-(42, 'Caifanes', '1988-08-28', 14, 'https://i.imgur.com/3TU7pQo.jpg', 4, '1100.00'),
-(43, 'Heridos', '2017-03-07', 26, 'https://i.imgur.com/dhXImUD.jpg', 4, '1100.00'),
-(44, 'El Diablito', '1990-06-19', 36, 'https://i.imgur.com/qJhMvQF.jpg', 4, '1100.00'),
-(45, 'El Nervio del Volcán', '1994-06-29', 21, 'https://i.imgur.com/fWgGJrD.jpg', 4, '1500.00'),
+(41, 'Too Weird to Live, Too Rare to Die!', '2013-10-08', 12, 'https://i.imgur.com/OvVX7CV.jpg', 3, '1400.00'),
+(42, 'Caifanes', '1988-08-28', 13, 'https://i.imgur.com/3TU7pQo.jpg', 4, '1100.00'),
+(43, 'Heridos', '2017-03-07', 25, 'https://i.imgur.com/dhXImUD.jpg', 4, '1100.00'),
+(44, 'El Diablito', '1990-06-19', 35, 'https://i.imgur.com/qJhMvQF.jpg', 4, '1100.00'),
+(45, 'El Nervio del Volcán', '1994-06-29', 20, 'https://i.imgur.com/fWgGJrD.jpg', 4, '1500.00'),
 (46, 'El Silencio', '1992-05-29', 61, 'https://i.imgur.com/GSJ2RcL.jpg', 4, '1500.00'),
 (47, 'Gracias', '1981-11-24', 35, 'https://i.imgur.com/rLUlls9.jpg', 5, '1300.00'),
-(48, 'Secretos', '1983-11-11', 2, 'https://i.imgur.com/2mOgqpE.jpg', 5, '2200.00'),
+(48, 'Secretos', '1983-11-11', 0, 'https://i.imgur.com/2mOgqpE.jpg', 5, '2200.00'),
 (49, 'José José Ranchero', '2010-01-26', 6, 'https://i.imgur.com/VMM2lbz.jpg', 5, '800.00'),
-(51, 'Sinfonico', '2018-02-23', 6, 'https://i.imgur.com/VOsKKSP.jpg', 5, '800.00'),
+(51, 'Sinfonico', '2018-02-23', 5, 'https://i.imgur.com/VOsKKSP.jpg', 5, '800.00'),
 (54, 'Y Volvere', '1969-10-01', 21, 'https://i.imgur.com/1cV2kf7.jpg', 7, '1800.00'),
-(55, 'A Fever You Cant Sweat out', '2005-09-27', 31, 'https://i.imgur.com/6fNNg8r.jpg', 3, '1800.00'),
+(55, 'A Fever You Cant Sweat out', '2005-09-27', 30, 'https://i.imgur.com/6fNNg8r.jpg', 3, '1800.00'),
 (56, 'Aries', '1993-06-22', 22, 'https://i.imgur.com/0mT3iE2.jpg', 9, '1100.00'),
 (57, 'Romance', '1991-11-19', 5, 'https://i.imgur.com/KAiJvbN.jpg', 9, '1100.00'),
 (58, 'iDon', '2009-04-28', 2, 'https://i.imgur.com/8WuexoY.jpg', 11, '1100.00'),
 (59, 'The Last Don 2', '2015-06-16', 5, 'https://i.imgur.com/P3AvGQq.jpg', 11, '1100.00'),
-(60, 'The Silver Scream', '2018-10-05', 9, 'https://i.imgur.com/JavzDj4.jpg', 10, '1500.00'),
-(61, 'Welcome to Horrorwood: Under Fire', '2023-10-20', 10, 'https://i.imgur.com/pxQhIDr.png', 10, '2400.00'),
+(60, 'The Silver Scream', '2018-10-05', 8, 'https://i.imgur.com/JavzDj4.jpg', 10, '1500.00'),
+(61, 'Welcome to Horrorwood: Under Fire', '2023-10-20', 9, 'https://i.imgur.com/pxQhIDr.png', 10, '2400.00'),
 (62, 'Noches de Salon', '2023-09-01', 10, 'https://i.imgur.com/AUr5aNY.jpg', 8, '1800.00');
 
 -- --------------------------------------------------------
@@ -401,6 +474,21 @@ CREATE TABLE `vista_compras` (
 ,`total_compra` decimal(10,2)
 ,`producto` varchar(255)
 ,`imagen_producto` varchar(255)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `vista_compras_con_email`
+-- (Véase abajo para la vista actual)
+--
+CREATE TABLE `vista_compras_con_email` (
+`comp_id` int(11)
+,`comp_status` varchar(255)
+,`comp_fPedio` date
+,`comp_fEntrega` datetime
+,`comp_total` decimal(10,2)
+,`cli_email` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -491,6 +579,15 @@ CREATE TABLE `vista_vinilos_con_generos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura para la vista `compras_vinilos_detalles`
+--
+DROP TABLE IF EXISTS `compras_vinilos_detalles`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `compras_vinilos_detalles`  AS SELECT `c`.`comp_id` AS `comp_id`, `c`.`comp_status` AS `comp_status`, `c`.`comp_fPedio` AS `comp_fPedio`, `c`.`comp_fEntrega` AS `comp_fEntrega`, `c`.`comp_total` AS `comp_total`, `cl`.`cli_id` AS `cli_id`, `cl`.`cli_nombre` AS `cli_nombre`, `cl`.`cli_apelloidos` AS `cli_apellido`, `cl`.`cli_email` AS `cli_email`, `cl`.`cli_rfc` AS `cli_rfc`, `v`.`vin_nombre` AS `vin_nombre`, `v`.`vin_precio` AS `precio` FROM (((`compra` `c` join `cliente` `cl` on((`c`.`cli_id` = `cl`.`cli_id`))) join `comp_vin` `cv` on((`c`.`comp_id` = `cv`.`comp_id`))) join `vinilo` `v` on((`cv`.`vin_id` = `v`.`vin_id`)))  ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura para la vista `vista_artistas_generos`
 --
 DROP TABLE IF EXISTS `vista_artistas_generos`;
@@ -514,6 +611,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vista_compras`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_compras`  AS SELECT `compra`.`comp_id` AS `id_compra`, `cliente`.`cli_nombre` AS `nombre_cliente`, `cliente`.`cli_apelloidos` AS `apellidos_cliente`, `direccion`.`dic_direccion` AS `direccion_envio`, `compra`.`comp_fPedio` AS `fecha_pedido`, `compra`.`comp_fEntrega` AS `fecha_entrega`, `compra`.`comp_status` AS `estado_compra`, `compra`.`comp_total` AS `total_compra`, `vinilo`.`vin_nombre` AS `producto`, `vinilo`.`vin_imgURL` AS `imagen_producto` FROM ((((`compra` join `cliente` on((`compra`.`cli_id` = `cliente`.`cli_id`))) join `direccion` on((`cliente`.`cli_id` = `direccion`.`cli_id`))) join `comp_vin` on((`compra`.`comp_id` = `comp_vin`.`comp_id`))) join `vinilo` on((`comp_vin`.`vin_id` = `vinilo`.`vin_id`)))  ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `vista_compras_con_email`
+--
+DROP TABLE IF EXISTS `vista_compras_con_email`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_compras_con_email`  AS SELECT `c`.`comp_id` AS `comp_id`, `c`.`comp_status` AS `comp_status`, `c`.`comp_fPedio` AS `comp_fPedio`, `c`.`comp_fEntrega` AS `comp_fEntrega`, `c`.`comp_total` AS `comp_total`, `cl`.`cli_email` AS `cli_email` FROM (`compra` `c` join `cliente` `cl` on((`c`.`cli_id` = `cl`.`cli_id`)))  ;
 
 -- --------------------------------------------------------
 
@@ -659,7 +765,7 @@ ALTER TABLE `vinilo`
 -- AUTO_INCREMENT de la tabla `artista`
 --
 ALTER TABLE `artista`
-  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `art_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cancion`
@@ -671,19 +777,19 @@ ALTER TABLE `cancion`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cli_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comp_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `direccion`
 --
 ALTER TABLE `direccion`
-  MODIFY `dir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `dir_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -695,7 +801,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `usr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `vinilo`

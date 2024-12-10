@@ -312,7 +312,6 @@ body {
     font-style: italic;
 }
 
-/**/
 .table-ventas {
     width: 100%;
     border-collapse: collapse;
@@ -344,7 +343,7 @@ body {
     font-style: italic;
 }
 
-.btn-dashboard-edit, .btn-dashboard-delete, .btn-dashboard-delivered {
+.btn-dashboard-edit, .btn-dashboard-delete, .btn-dashboard-delivered, .btn-dashboard-pdf {
     background-color: #89ADB0;
     width: 80px;
     color: var(--color-fondo);
@@ -356,8 +355,26 @@ body {
     cursor: pointer;
 }
 
-.btn-dashboard-delete {
+.btn-dashboard-pdf {
     background-color: var(--color-boton-rojo);
+}
+
+@media (max-width: 768px) {
+    .tabs-dashboards-container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .table-vinilos th, .table-vinilos td, .table-ventas th, .table-ventas td {
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    .btn-dashboard-edit, .btn-dashboard-delete, .btn-dashboard-delivered, .btn-dashboard-pdf {
+        width: 60px;
+        font-size: 12px;
+        padding: 3px 5px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -405,6 +422,8 @@ section h2 {
 
 .carousel-container {
     position: relative;
+    display: flex;
+    align-items: center;
     max-width: 100%;
     margin: 0 auto;
     overflow: hidden;
@@ -412,7 +431,7 @@ section h2 {
 
 .carousel {
     display: flex;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, height 0.3s ease
+    transition: transform 0.3s ease, height 0.3s ease
 }
 
 .vinilo-item {
@@ -468,6 +487,56 @@ section h2 {
 
 .carousel-btn:hover {
     background-color: var(--color-boton-hover);
+}
+
+@media (max-width: 600px) {
+    .vinilo-item {
+        width: 150px;
+        height: 300px;
+    }
+
+    .vinilo-item:hover {
+        height: 350px;
+    }
+
+    .carousel-btn {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Pantallas medianas (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .vinilo-item {
+        width: 180px;
+        height: 340px;
+    }
+
+    .vinilo-item:hover {
+        height: 390px;
+    }
+
+    .carousel-btn {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+/* Pantallas grandes (escritorios) */
+@media (min-width: 1025px) {
+    .vinilo-item {
+        width: 220px;
+        height: 380px;
+    }
+
+    .vinilo-item:hover {
+        height: 440px;
+    }
+
+    .carousel-btn {
+        font-size: 18px;
+        padding: 12px;
+    }
 }
 
 .vinilo-item h3 {
@@ -644,7 +713,7 @@ section h2 {
     gap: 20px;
 }
 
-.profile-form-container, .address-form-container, .address-list-container {
+.profile-form-container, .address-form-container, .address-list-container, .purchases-list-container {
     /*width: 50%;*/
     flex: 1 1 45%;
     padding: 20px;
@@ -674,7 +743,6 @@ section h2 {
     align-items: center;
 }*/
 
-/* Campos del formulario */
 .campo {
     display: flex;
     flex-direction: column;
@@ -712,13 +780,13 @@ section h2 {
     border-color: var(--color-borde-hover);
 }
 
-.address-list {
+.address-list, .purchase-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-.address-list-item {
+.address-list-item, .purchases-list-item {
     background-color: var(--color-fondo-input);
     border: 1px solid var(--color-borde-input);
     border-radius: 8px;

@@ -16,7 +16,7 @@
 
                 $carritoJson = json_encode($carrito);
 
-                $query = "CALL registrar_compra(:cli_id, :direccion_id, :carrito)";
+                $query = "CALL realizarCompra(:cli_id, :direccion_id, :carrito)";
                 $stmt = $this->conn->prepare($query);
                 $stmt->bindParam(':cli_id', $cli_id, PDO::PARAM_INT);
                 $stmt->bindParam(':direccion_id', $direccion_id, PDO::PARAM_INT);
@@ -74,18 +74,53 @@
                 $stmt = $this->conn->prepare($query);
                 $stmt->bindParam(':comp_id', $comp_id, PDO::PARAM_INT);
                 $stmt->execute();
-                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                if (!$result) {
+                return false;
+                }
+
+                $compra = $result[0]; 
+                $vinilos = [];
+
+                foreach ($result as $row) {
+                    $vinilos[] = [
+                    'vin_nombre' => $row['vin_nombre'],
+                    'precio' => $row['precio'],
+                    ];
+                }
+
+                return [
+                    'compra' => [
+                        'comp_id' => $compra['comp_id'],
+                        'comp_status' => $compra['comp_status'],
+                        'comp_fPedio' => $compra['comp_fPedio'],
+                        'comp_fEntrega' => $compra['comp_fEntrega'],
+                        'comp_total' => $compra['comp_total'],
+                    ],
+                    'cliente' => [
+                        'cli_nombre' => $compra['cli_nombre'],
+                        'cli_apellido' => $compra['cli_apellido'],
+                        'cli_email' => $compra['cli_email'],
+                        'cli_rfc' => $compra['cli_rfc'],
+                    ],
+                    'vinilos' => $vinilos,
+                ];
             } catch (Exception $e) {
                 throw new Exception("Error al obtener la compra por ID: " . $e->getMessage());
             }
         }
 
         public function obtenerComprasCliente($cli_id) {
-            $query = "SELECT * FROM vista_compras WHERE cli_id = :cli_id";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bindParam(':cli_id', $cli_id, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            try {
+                $query = "SELECT DISTINCT comp_id, comp_status, comp_fPedio, comp_total FROM compras_vinilos_detalles WHERE cli_id = :cli_id";  
+                $stmt = $this->conn->prepare($query);
+                $stmt->bindParam(':cli_id', $cli_id, PDO::PARAM_INT);
+                $stmt->execute();
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } catch (Exception $e) {
+                throw new Exception("Error al obtener las compras del cliente: " . $e->getMessage());
+            }
         }
     }
 ?>

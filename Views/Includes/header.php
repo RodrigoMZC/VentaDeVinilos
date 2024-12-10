@@ -56,9 +56,11 @@
                     <ul class="ul-left-nav">
 
                         <li class="left-nav-item"> 
-                            <a class="a-nav-item" href="/Views/Dashboard.php">
-                                <span>Dashboard</span>
-                            </a>
+                            <?php if (isset($_SESSION['usr_usuario']) && $_SESSION['usr_usuario'] === 'rodrigo'): ?>
+                                <a class="a-nav-item" href="/Views/Dashboard.php">
+                                    <span>Dashboard</span>
+                                </a>
+                            <?php endif; ?>
                         </li>
 
                         <li class="left-nav-item"> 
@@ -185,14 +187,20 @@
                                         </li>
                                         <?php endforeach; ?>
                                     </ul>
-                                    <button id="confirm-purchase" class="confirm-purchase">Confirmar Compra</button>
+                                    <!--<button id="confirm-purchase" class="confirm-purchase">Confirmar Compra</button>-->
+                                    <form id="confirm-purchase" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                        <input type="hidden" name="cmd" value="_s-xclick" />
+                                        <input type="hidden" name="hosted_button_id" value="9VYY26FH4N8T4" />
+                                        <input type="hidden" name="currency_code" value="MXN" />
+                                        <input type="image" src="https://www.paypalobjects.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif" 
+                                               border="0" name="submit" title="PayPal es una forma segura y fácil de pagar en línea." 
+                                               alt="Comprar ahora" />
+                                    </form>
                                     <?php else: ?>
                                         <p>No tienes direcciones guardadas. <a href="/Views/Perfil.php">Agrega una dirección aquí</a>.</p>
                                 <?php endif; ?>
                         </div>
-
                     </ul>
-
                 </div>
             </div>
         </nav>

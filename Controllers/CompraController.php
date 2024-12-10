@@ -33,6 +33,10 @@
         public function actualizarEstadoEntrega($comp_id) {
             return $this->compra->actualizarEstadoEntrega($comp_id);
         }
+
+        public function obtenerComprasCliente($cli_id) {
+            return $this->compra->obtenerComprasCliente($cli_id);
+        }
         
     }
 

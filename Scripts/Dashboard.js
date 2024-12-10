@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //Modal Vinilos
     const modalVinilo = document.getElementById('add-vinilo-modal');
     const btnModalVinilo = document.getElementById('btn-add-vinilo');
-
+    // Modal Actualizar Vinilos
+    const ModalUpdateVinilo = document.getElementById('aupdate-vinilo-modal');
+    const btnEditVinilo = document.querySelectorAll('.btn-dashboard-edit');
+    // Cerrar Modales
     const btnClose = document.querySelectorAll('.close-modal');
 
     btnModalArtista.addEventListener('click', () => {
@@ -43,9 +46,35 @@ document.addEventListener("DOMContentLoaded", () => {
             modalVinilo.style.display = 'none';
         });
     });
+
+    btnEditVinilo.forEach(button => {
+        button.addEventListener('click', (evt) => {
+            const viniloData = JSON.parse(e.target.closest('tr').dataset.vinilo);
+
+            document.getElementById('vin-id').value = viniloData.vin_id;
+            document.getElementById('vinilo-name').value = viniloData.vin_nombre;
+            document.getElementById('vinilo-fLanz').value = viniloData.vin_fechaLanz;
+            document.getElementById('vinilo-stock').value = viniloData.vin_stok;
+            document.getElementById('vinilo-inmgURL').value = viniloData.vin_imgURL;
+            document.getElementById('vinilo-precio').value = viniloData.vin_precio;
+
+            const selectArtista = document.getElementById('vinilo-artista');
+            Array.from(selectArtista.options).forEach(option => {
+                option.selected = option.value === viniloData.art_nombre;
+            });
+
+            const selectGenero = document.getElementById('artista-generos');
+            const viniloGeneros = viniloData.generos;
+            Array.from(selectGenero.options).forEach(option => {
+                option.selected = viniloGeneros.includes(option.value);
+            });
+
+            ModalUpdateVinilo.style.display = 'flex';
+        });
+    });
 });
 
-    // Tablas de Modales
+    // Tablas de Dashboard
 document.addEventListener("DOMContentLoaded", () => {
     const entregarBtn = document.querySelectorAll(".btn-dashboard-delivered");
     const eliminarBtn = document.querySelectorAll(".btn-dashboard-delete");

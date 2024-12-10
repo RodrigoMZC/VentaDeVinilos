@@ -5,6 +5,7 @@
     require_once __DIR__ . '/../Config/Connection.php';
     require_once __DIR__ . '/../Controllers/UsuarioController.php';
     require_once __DIR__ . '/../Controllers/DireccionController.php';
+    require_once __DIR__ . '/../Controllers/CompraController.php';
 
     if (!isset($_SESSION['usr_id'])) {
         header("Location: Login.php");
@@ -18,6 +19,9 @@
 
     $clienteData = $auth->obtenerCliente($usr_id);
     $direcciones = $dir->obtenerDireccion($usr_id);
+
+    $compraController = new CompraController($conn);
+    $conpras = $compraController->obtenerComprasCliente($usr_id);
 
     if (!$clienteData) {
         echo "Error: No se pudo recuperar la información del usuario.";
@@ -120,7 +124,6 @@
                                 Codigo Postal: <?php echo htmlspecialchars($direccion['dir_cPostal']); ?> <br>
                                 Descripción: <?php echo htmlspecialchars($direccion['dir_descrip']); ?>
 
-                                <!-- Botón para eliminar la dirección -->
                                 <form action="/Controllers/DireccionController.php" method="POST" onsubmit="return confirm('¿Estas seguro de eliminaresta la direccion?');">
                                     <input type="hidden" name="action" value="delete_direccion">
                                     <input type="hidden" name="dir_descrip" value="<?php echo $direccion['dir_descrip']; ?>">
@@ -129,7 +132,25 @@
                             </li>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <li>No hay direcciones para mostrar.</li>
+                        <li>No hay Direcciones para mostrar.</li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+            <div class="purchases-list-container">
+                <!-- Lista de Compras -->
+                <h3>Tus Compras</h3>
+                <ul class="purchases-list">
+                    <?php if(!empty($compras)): ?>
+                        <?php foreach($compras as $compra): ?>
+                            <li class="purchases-list-item">
+                                <strong>Compra ID:</strong> <?php echo htmlspecialchars($compra['comp_id']); ?><br>
+                                <strong>Fecha del Pedido:</strong> <?php echo htmlspecialchars($compra['comp_fPedio']); ?><br>
+                                <strong>Total:</strong> $<?php echo htmlspecialchars(number_format($compra['comp_total'], 2)); ?><br>
+                                <strong>Estado:</strong> <?php echo htmlspecialchars($compra['comp_status']); ?><br>
+                            </li>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <li>No hay Compras para mostrar.</li>
                     <?php endif; ?>
                 </ul>
             </div>

@@ -32,9 +32,6 @@ Este proyecto consiste en una tienda en línea para la venta de vinilos, desarro
 ### 📊 Panel de administración
 ![Panel de admin - Inventario](images/DashVinilos.png)
 
-### 🧾 Historial de compras
-![Compras realizadas](images/DashCompras.png)
-
 ### 📄 Comprobante en PDF generado
 ![PDF del pedido](images/PDF.png)
 

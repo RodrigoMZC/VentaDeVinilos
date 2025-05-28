@@ -62,10 +62,10 @@
         <p>¡Aprovecha nuestras ofertas en vinilos seleccionados!</p>
     </section>-->
 
-    <section id="contacto">
+    <!--<section id="contacto">
         <h2>Contacto</h2>
         <form action="rdgmcz14@gmail.com" method="post" enctype="text/plain" class="formulario">
-            <!--<fieldset>-->
+            
             <legend>Envíanos un mensaje</legend>
 
             <div class="contenedor-campos">
@@ -87,6 +87,7 @@
             <button class="btn-compra" type="submit">Enviar</button>
         </form>
     </section>
+    -->
 
     <?php include 'Views/Includes/footer.php'; ?>
 </body>
